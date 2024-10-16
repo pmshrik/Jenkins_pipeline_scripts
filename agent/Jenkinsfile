@@ -1,5 +1,9 @@
 pipeline {
     agent any
+     environment {
+        TEST1 = "test_value1"
+        TEST2 = "test_value2"
+    }
     stages {
         stage('Build') { 
 
@@ -30,12 +34,9 @@ pipeline {
         }
         stage('Deploy') { 
             steps {
-                echo "This is Deploy stage." 
-                   sh '''
-                    #!/bin/bash
-                    echo $BUILD_STAGE1 $BUILD_STAGE2
-                    sleep 5 
-                '''
+                script {
+                    echo "${env.TEST1}"
+                }
             
             }
         }
