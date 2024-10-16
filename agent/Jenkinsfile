@@ -10,7 +10,11 @@ pipeline {
             
             steps {
                 echo "This is Build stage."
-                sh 'echo $TEST1'
+                sh '''
+                    #!/bin/bash
+                    echo $TEST1
+                    sleep 5 
+                '''
             }
         }
         stage('Test') { 
