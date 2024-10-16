@@ -1,5 +1,8 @@
 pipeline {
     agent any
+    parameters {
+        string(name: 'PARAM_STRING', defaultValue: 'input_param', decription: 'This is a string parameter')
+    }
      environment {
         TEST1 = "test_value1"
         TEST2 = "test_value2"
@@ -17,6 +20,7 @@ pipeline {
                     sh '''
                         #!/bin/bash
                         echo $BUILD_STAGE1
+                        echo $PARAM_STRING
                         sleep 5 
                     '''
                 }
@@ -36,6 +40,7 @@ pipeline {
             steps {
                 script {
                     echo "${env.TEST1}"
+                    echo "${params.PARAM_STRING}"
                 }
             
             }
