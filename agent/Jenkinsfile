@@ -7,7 +7,7 @@ pipeline {
                 sh 'sleep 10 '
             }
         }
-    }stage['Test']{
+    stage['Test']{
         steps{
             echo "This is test step"
             sh '''
@@ -17,4 +17,5 @@ pipeline {
             '''
         }
     }
+}
 }
