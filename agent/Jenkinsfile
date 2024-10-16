@@ -29,13 +29,19 @@ pipeline {
                     #!/bin/bash
                     ls -lrt
                     sleep 5
-                    echo $TEST2 $BUILD_STAGE2
+                    echo $TEST2 
                 '''
             }
         }
         stage('Deploy') { 
             steps {
                 echo "This is Deploy stage." 
+                   sh '''
+                    #!/bin/bash
+                    echo $TEST1 $BUILD_STAGE1
+                    sleep 5 
+                '''
+            
             }
         }
     }
