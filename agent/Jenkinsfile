@@ -7,12 +7,17 @@ pipeline {
     }
     stages {
         stage('Build') { 
+
+            environment {
+        BUILD_STAGE1 = "my_build1"
+        BUILD_STAGE2 = "my_build2"
+    }
             
             steps {
                 echo "This is Build stage."
                 sh '''
                     #!/bin/bash
-                    echo $TEST1
+                    echo $TEST1 $BUILD_STAGE1
                     sleep 5 
                 '''
             }
@@ -24,7 +29,7 @@ pipeline {
                     #!/bin/bash
                     ls -lrt
                     sleep 5
-                    echo $TEST2
+                    echo $TEST2 $BUILD_STAGE2
                 '''
             }
         }
