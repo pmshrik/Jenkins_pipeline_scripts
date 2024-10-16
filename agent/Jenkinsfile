@@ -7,6 +7,12 @@ pipeline {
                 sh 'sleep 10'
             }
         }
+        stage('Build1') { 
+            steps {
+                echo "This is Build stage."
+                sh 'sleep 10'
+            }
+        }
         stage('Test') { 
             steps {
                 echo "This is Test stage." 
@@ -17,7 +23,22 @@ pipeline {
                 '''
             }
         }
+        stage('Test2') { 
+            steps {
+                echo "This is Test stage." 
+                sh ''' 
+                    #!/bin/bash
+                    ls -lrt
+                    sleep 10
+                '''
+            }
+        }
         stage('Deploy') { 
+            steps {
+                echo "This is Deploy stage." 
+            }
+        }
+        stage('Deploy2') { 
             steps {
                 echo "This is Deploy stage." 
             }
