@@ -1,31 +1,17 @@
 pipeline {
-    agent {
-        label 'Node_Label_1'
-    } 
+    
     stages {
         stage('Build') { 
-            steps {
-                echo "This is Build stage."
-                sh 'sleep 10'
+            agent {
+                label 'Node_Label_1'
             }
-        }
-        stage('Build1') { 
             steps {
                 echo "This is Build stage."
                 sh 'sleep 10'
             }
         }
         stage('Test') { 
-            steps {
-                echo "This is Test stage." 
-                sh ''' 
-                    #!/bin/bash
-                    ls -lrt
-                    sleep 10
-                '''
-            }
-        }
-        stage('Test2') { 
+            agent any
             steps {
                 echo "This is Test stage." 
                 sh ''' 
@@ -36,11 +22,6 @@ pipeline {
             }
         }
         stage('Deploy') { 
-            steps {
-                echo "This is Deploy stage." 
-            }
-        }
-        stage('Deploy2') { 
             steps {
                 echo "This is Deploy stage." 
             }
