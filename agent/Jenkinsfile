@@ -10,7 +10,6 @@ pipeline {
             
             steps {
                 echo "This is Build stage."
-                sh 'sleep 10'
                 echo '${TEST1}'
             }
         }
@@ -20,7 +19,7 @@ pipeline {
                 sh ''' 
                     #!/bin/bash
                     ls -lrt
-                    sleep 10
+                    sleep 5
                     echo $TEST2
                 '''
             }
