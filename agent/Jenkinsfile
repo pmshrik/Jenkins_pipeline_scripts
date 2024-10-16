@@ -1,23 +1,27 @@
 pipeline {
-    agent none
+    agent any
+
+    environment {
+        TEST1 = "test_value1"
+        TEST2 = "test_value2"
+    }
     stages {
         stage('Build') { 
-            agent {
-                label 'Node_Label_1'
-            }
+            
             steps {
                 echo "This is Build stage."
                 sh 'sleep 10'
+                echo $TEST1
             }
         }
         stage('Test') { 
-            agent any
             steps {
                 echo "This is Test stage." 
                 sh ''' 
                     #!/bin/bash
                     ls -lrt
                     sleep 10
+                    echo $TEST2
                 '''
             }
         }
