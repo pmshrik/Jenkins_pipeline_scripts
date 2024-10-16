@@ -11,7 +11,7 @@ pipeline {
             steps {
                 echo "This is Build stage."
                 sh 'sleep 10'
-                echo '$TEST1'
+                echo '${TEST1}'
             }
         }
         stage('Test') { 
