@@ -1,0 +1,20 @@
+pipeline {
+    agent any
+    stages{
+        stage['Build']{
+            steps{
+                echo "This is build step"
+                sh 'sleep 10 '
+            }
+        }
+    }stages['Test']{
+        steps{
+            echo "This is test step"
+            sh '''
+                #!/bin/bash
+                ls -lrt
+                sleep 10
+            '''
+        }
+    }
+}
