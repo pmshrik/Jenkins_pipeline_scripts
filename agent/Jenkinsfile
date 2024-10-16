@@ -1,21 +1,20 @@
 pipeline {
-    agent any
-    stages{
-        stage['Build']{
-            steps{
-                echo "This is build step"
-                sh 'sleep 10 '
+    agent any 
+    stages {
+        stage('Build') { 
+            steps {
+                echo "This is Build stage."
             }
         }
-    stage['Test']{
-        steps{
-            echo "This is test step"
-            sh '''
-                #!/bin/bash
-                ls -lrt
-                sleep 10
-            '''
+        stage('Test') { 
+            steps {
+                echo "This is Test stage." 
+            }
+        }
+        stage('Deploy') { 
+            steps {
+                echo "This is Deploy stage." 
+            }
         }
     }
-}
 }
