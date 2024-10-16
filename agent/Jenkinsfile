@@ -8,10 +8,10 @@ pipeline {
     stages {
         stage('Build') { 
 
-            environment {
-        BUILD_STAGE1 = "my_build1"
-        BUILD_STAGE2 = "my_build2"
-    }
+        environment {
+            BUILD_STAGE1 = "my_build1"
+            BUILD_STAGE2 = "my_build2"
+        }
             
             steps {
                 echo "This is Build stage."
