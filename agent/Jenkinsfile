@@ -3,51 +3,35 @@ pipeline {
     triggers{
         cron ('H/59 * * * *')
     }
-    parameters {
-        string(name: 'PARAM_STRING', defaultValue: 'input_param', description: 'This is a string parameter')
-        booleanParam(name: 'TOGGLE', defaultValue: true, description: 'Toggle this value')
-    }
-     environment {
-        TEST1 = "test_value1"
-        TEST2 = "test_value2"
-    }
+  
+    
     stages {
         stage('Build') { 
 
-            environment {
-                BUILD_STAGE1 = "my_build1"
-                BUILD_STAGE2 = "my_build2"
-            }
+           
             
                 steps {
-                    echo "This is Build stage."
                     sh '''
-                        #!/bin/bash
-                        echo $BUILD_STAGE1
-                        echo $PARAM_STRING
                         sleep 5 
                     '''
                 }
         }
         stage('Test') { 
             steps {
-                echo "This is Test stage." 
-                sh ''' 
-                    #!/bin/bash
-                    ls -lrt
-                    sleep 5
-                    echo $BUILD_STAGE2 
-                '''
+                sh '''
+                        sleep 10
+                        exit 1
+                    '''
             }
         }
         stage('Deploy') { 
             steps {
-                script {
-                    echo "${env.TEST1}"
-                    echo "${params.PARAM_STRING}"
+                 sh '''
+                        sleep 5 
+                    '''
                 }
             
-            }
+            
         }
     }
 }
