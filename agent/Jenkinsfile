@@ -1,7 +1,7 @@
 pipeline {
     agent any
     triggers{
-        cron ('*/59 * * * *')
+        cron ('H/59 * * * *')
     }
     parameters {
         string(name: 'PARAM_STRING', defaultValue: 'input_param', description: 'This is a string parameter')
